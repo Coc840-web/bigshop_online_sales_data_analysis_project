@@ -1,0 +1,38 @@
+In Power BI you need to start creating measures for creating useful visualisations.
+But first of all you need to link all tables together. To facilitate date usage, it's better to create a date table seperate from the other tables. 
+
+DateTable = CALENDAR(MIN(Sales[InvoiceDate]), MAX(Sales[InvoiceDate]))
+
+#### Measures created:
+- AVG Order Value = SUM(Sales[Revenue]) /SUM(Sales[Quantity])
+- To create the Purchase Frequency, you first need to calculate the Total purchases and divide them by the days on which a purchase happened.
+  The total purchases: Total Purchases = DISTINCTCOUNT(Sales[InvoiceNo])
+  The Purchase days: Purchase Days = CALCULATE(
+    DISTINCTCOUNT(Sales[InvoiceDate]),
+    ALLEXCEPT(Sales, Sales[CustomerID]))
+- To calculate the retention rate, first calculate:
+
+  Retained Customers = 
+CALCULATE(
+    DISTINCTCOUNT(Customers[CustomerID]),
+    FILTER(
+        Sales,
+        FORMAT(Sales[InvoiceDate], "MM-YYYY") = FORMAT(MAX(Sales[InvoiceDate]), "MM-YYYY")
+            &&
+        Sales[CustomerID] IN VALUES(Sales[CustomerID])
+    )
+)
+ and then:
+
+Prev Period Customers = 
+CALCULATE(
+    DISTINCTCOUNT(Sales[CustomerID]),
+    FILTER(
+        ALL(Sales),
+        FORMAT(Sales[InvoiceDate], "MM-YYYY") = FORMAT(EDATE(MAX(Sales[InvoiceDate]), -1), "MM-YYYY")
+    )
+)
+
+To get to
+
+Rentention rate = DIVIDE(Sales[Retained Customers], [Prev Period Customers]) * 100
