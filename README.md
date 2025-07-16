@@ -20,7 +20,7 @@ DOWNLOAD THE SAMPLE DATASET: https://archive.ics.uci.edu/dataset/352/online+reta
 - Excel for preprocessing.
 - Power BI for visualisation and calculating measures using DAX.
 
-## Project Highlights
+## 📈Project Highlights
 - Identified top-selling products
 - Analysed regional performance
 - Dashboard with key metrics
