@@ -13,7 +13,7 @@ DOWNLOAD THE SAMPLE DATASET: https://archive.ics.uci.edu/dataset/352/online+reta
 ## 📂Files Included
 - SQL queries used.
 - Excel Files to do some data cleaning.
-- Power BI Dashboard.
+- Power BI Dashboard along with some DAX used in a .txt file.
 
 ## 🛠️Tools Used
 - SQL for data cleaning and analysis.
