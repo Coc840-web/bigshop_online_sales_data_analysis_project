@@ -1,1 +1,22 @@
+You will need to export the tables into a csv files to start doing some modifications in Excel.
+
+You can change data type.
+Create Pivot Tables to have initial insights.
+Use Vlookup to check for certain data.
+
+Our Customers Database is 4372 in total. United Kingdom is the highest with 3950, followed by Germany with 95 customers. Which means that our focus should be on the United Kingdom customer base. 
+
+In the Products Database, we need to change the data type of the StockCode and make it all text.
+
+Remove duplicates from the data 13 rows were removed.
+
+We want to check the more expensive product which is Vintage Red Kitchen Cabinet, selling for £295. Although when you sort data you will find the first two products Adjust bad dept and dotcom postage. I suggest this is an account entry to the stock id. We might not be interested in those entries, we might need to remove or hide from the data.
+
+
+Let's say I want to check the price of a certain product (17165D). I can use the VLOOKUP function as follows:
+=VLOOKUP(17165D,Table1[#All],3,FALSE)
+
+In the sales sheet, you will need to split the date and time column into two columns. Using the Text to Data button. 
+
+Let's say we want to check the highest selling product in terms of revenue, excluding the accounting entries, we found that 22423 is selling in the period of data for £164,459.49.
 
